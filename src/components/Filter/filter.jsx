@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.filter.value);
+  const filters = useSelector(state => state.filters.value);
 
   return (
     <FilterLabel>
