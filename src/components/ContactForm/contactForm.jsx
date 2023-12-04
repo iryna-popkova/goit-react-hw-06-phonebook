@@ -13,6 +13,7 @@ import {
   FormGroup,
   ErrorMessage,
 } from './contactForm.styled';
+import { selectContacts } from 'redux/selectors';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,7 +28,7 @@ const contactSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(selectContacts);
 
   return (
     <FormContainer>

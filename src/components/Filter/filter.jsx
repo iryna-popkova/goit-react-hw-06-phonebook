@@ -1,10 +1,11 @@
 import { changeFilters } from 'redux/filterSlice';
 import { FilterLabel, FilterInput } from './filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectFiletrs } from 'redux/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.filters.value);
+  const filters = useSelector(selectFiletrs);
 
   return (
     <FilterLabel>

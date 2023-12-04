@@ -1,20 +1,22 @@
 import { List } from './contactList.styled';
 import { ContactItem } from '../ContactItem/contactItem';
 import { useSelector } from 'react-redux';
+import { selectContacts, selectFiletrs } from 'redux/selectors';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filters = useSelector(state => state.filters.value);
+  const contacts = useSelector(selectContacts);
+  const filters = useSelector(selectFiletrs);
 
   const filterContacts = () => {
+    const normalizedFilter = filters.toLowerCase();
     return contacts.filter(contact => {
-      if (filters === undefined || filters === '') {
-        return true;
-      }
       const contactName = contact.name.toLowerCase();
       const contactNumber = contact.number;
 
-      return contactName.includes(filters) || contactNumber.includes(filters);
+      return (
+        contactName.toLowerCase().includes(normalizedFilter) ||
+        contactNumber.includes(normalizedFilter)
+      );
     });
   };
 
