@@ -13,7 +13,7 @@ export const App = () => {
       <SectionTitle>Add contact</SectionTitle>
       <ContactForm />
       <SectionTitle>Contacts</SectionTitle>
-      {contacts.length !== 0 ? (
+      {contacts.length > 0 ? (
         <>
           <Filter />
           <ContactList />

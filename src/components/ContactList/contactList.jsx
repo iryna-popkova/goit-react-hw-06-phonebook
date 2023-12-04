@@ -8,6 +8,9 @@ export const ContactList = () => {
 
   const filterContacts = () => {
     return contacts.filter(contact => {
+      if (filters === undefined || filters === '') {
+        return true;
+      }
       const contactName = contact.name.toLowerCase();
       const contactNumber = contact.number;
 
