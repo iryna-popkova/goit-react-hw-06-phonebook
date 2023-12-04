@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { nanoid } from 'nanoid';
-import { resetFilters } from 'redux/filterSlice';
 
 import {
   Field,
@@ -39,7 +38,7 @@ export const ContactForm = () => {
         }}
         validationSchema={contactSchema}
         onSubmit={(values, actions) => {
-          dispatch(resetFilters());
+          actions.resetForm();
           if (contacts.some(contact => contact.name === values.name)) {
             Notify.failure(`${values.name} already in phonebook!`);
             return;
